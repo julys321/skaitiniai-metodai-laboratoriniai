@@ -9,6 +9,10 @@ window.onload = () => {
     const lentele3 = new Lentele3;
     const lab1Uzd3Document = document.getElementById('lab1-uzd3');
     Plotly.react(lab1Uzd3Document, [lentele3.scatter, lentele3.trace], lentele3.layout);
+    //TODO
+    const lentele4 = new Lentele4;
+    const lab1Uzd4Document = document.getElementById('lab1-uzd4');
+    Plotly.react(lab1Uzd4Document, [lentele4.data], lentele4.layout);
 };
 class Lentele1 {
     constructor() {
@@ -149,5 +153,17 @@ class Lentele3 {
                 }
             }
         };
+    }
+}
+
+class Lentele4 {
+    constructor() {
+        this.data = {
+            x: [],
+            y: []
+        };
+    }
+    get layout() {
+        return {};
     }
 }
