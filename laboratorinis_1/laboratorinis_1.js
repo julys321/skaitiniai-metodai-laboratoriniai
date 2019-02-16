@@ -6,7 +6,6 @@ window.onload = () => {
     const lab1Uzd2Document = document.getElementById('lab1-uzd2');
     Plotly.react(lab1Uzd2Document, [new Lentele2]);
 
-    //TODO: kolkas tik piesia taskus
     const lentele3 = new Lentele3;
     const lab1Uzd3Document = document.getElementById('lab1-uzd3');
     Plotly.react(lab1Uzd3Document, [lentele3.scatter, lentele3.trace], lentele3.layout);
