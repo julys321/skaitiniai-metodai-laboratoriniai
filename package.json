@@ -4,5 +4,8 @@
   "description": "Kurso \"Skaitiniai metodai ir algoritmai\" laboratoriniai darbai",
   "main": "index.js",
   "author": "julys321",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^5.4.2"
+  }
 }
