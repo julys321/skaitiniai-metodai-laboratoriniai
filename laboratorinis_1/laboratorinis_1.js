@@ -112,7 +112,6 @@ class Lentele3 {
         this.scatter.x.forEach((value, index) => {
             this.scatter.text.push('i' + index);
         });
-        //TODO: make more readable
         this.trace = {
             x: [],
             y: [],
