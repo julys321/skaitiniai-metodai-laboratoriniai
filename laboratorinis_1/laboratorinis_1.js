@@ -9,7 +9,7 @@ window.onload = () => {
     //TODO: kolkas tik piesia taskus
     const lentele3 = new Lentele3;
     const lab1Uzd3Document = document.getElementById('lab1-uzd3');
-    Plotly.react(lab1Uzd3Document, [lentele3.data], lentele3.layout);
+    Plotly.react(lab1Uzd3Document, [lentele3.scatter, lentele3.trace], lentele3.layout);
 };
 class Lentele1 {
     constructor() {
@@ -97,34 +97,40 @@ class Lentele2 {
 
 class Lentele3 {
     constructor() {
-        this.data = {
+        this.scatter = {
             x: [],
             y: [],
             mode: 'markers+text',
             marker: {
-                color: 'rgba(156, 165, 196, 0.95)',
-                line: {
-                    color: 'rgba(156, 165, 196, 1.0)',
-                    width: 1,
-                },
-                symbol: 'circle',
+                color: 'rgba(0, 255, 0, 0.95)',
+                symbol: 'square',
                 size: 4
             },
             text: [],
             textposition: 'bottom',
         };
-
-        this.data.x = duomenysRackausko.map((object) => object['Pajamos']);
-        this.data.y = duomenysRackausko.map((object) => object['Islaidos']);
-        this.data.x.forEach((value, index) => {
-            this.data.text.push('i' + index);
+        this.scatter.x = duomenysRackausko.map((object) => object['Pajamos']);
+        this.scatter.y = duomenysRackausko.map((object) => object['Islaidos']);
+        this.scatter.x.forEach((value, index) => {
+            this.scatter.text.push('i' + index);
         });
+        //TODO: make more readable
+        this.trace = {
+            x: [],
+            y: [],
+            type: 'scatter'
+        };
+        for (let i = 0; i < 40; i++) {
+            const x = duomenysRackausko[i].Pajamos;
+            this.trace.x.push(x);
+            this.trace.y.push((0.13 * x + 41));
+        }
     }
     get layout() {
-        const xMinRadius = Math.min.apply(Math, this.data.x) - 1;
-        const xMaxRadius = Math.max.apply(Math, this.data.x) + 1;
-        const yMinRadius = Math.min.apply(Math, this.data.y) - 1;
-        const yMaxRadius = Math.max.apply(Math, this.data.y) + 1;
+        const xMinRadius = Math.min.apply(Math, this.scatter.x) - 1;
+        const xMaxRadius = Math.max.apply(Math, this.scatter.x) + 1;
+        const yMinRadius = Math.min.apply(Math, this.scatter.y) - 1;
+        const yMaxRadius = Math.max.apply(Math, this.scatter.y) + 1;
         return {
             xaxis: {
                 range: [xMinRadius, xMaxRadius]
