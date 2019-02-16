@@ -100,14 +100,13 @@ class Lentele3 {
         this.scatter = {
             x: [],
             y: [],
-            mode: 'markers+text',
+            mode: 'markers',
             marker: {
                 color: 'rgba(0, 255, 0, 0.95)',
                 symbol: 'square',
                 size: 4
             },
-            text: [],
-            textposition: 'bottom',
+            text: []
         };
         this.scatter.x = duomenysRackausko.map((object) => object['Pajamos']);
         this.scatter.y = duomenysRackausko.map((object) => object['Islaidos']);
@@ -127,10 +126,6 @@ class Lentele3 {
         }
     }
     get layout() {
-        const xMinRadius = Math.min.apply(Math, this.scatter.x) - 1;
-        const xMaxRadius = Math.max.apply(Math, this.scatter.x) + 1;
-        const yMinRadius = Math.min.apply(Math, this.scatter.y) - 1;
-        const yMaxRadius = Math.max.apply(Math, this.scatter.y) + 1;
         return {
             title: {
                 text: 'Maziausiu kvadratu metodas'
@@ -143,8 +138,7 @@ class Lentele3 {
                         size: 18,
                         color: '#7f7f7f'
                     }
-                },
-                range: [xMinRadius, xMaxRadius]
+                }
             },
             yaxis: {
                 title: {
@@ -154,8 +148,7 @@ class Lentele3 {
                         size: 18,
                         color: '#7f7f7f'
                     }
-                },
-                range: [yMinRadius, yMaxRadius]
+                }
             }
         };
     }
