@@ -1,0 +1,8 @@
+{
+  "name": "skaitiniai-metodai-laboratoriniai",
+  "version": "1.0.0",
+  "description": "Kurso \"Skaitiniai metodai ir algoritmai\" laboratoriniai darbai",
+  "main": "index.js",
+  "author": "julys321",
+  "license": "ISC"
+}

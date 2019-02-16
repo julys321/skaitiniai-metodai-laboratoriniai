@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+object {
+    width: 100%;
+    height: 100%;
+}
+.table {
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+.lab-div {
+    display: block;
+    overflow: auto;
+}
