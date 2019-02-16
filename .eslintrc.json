@@ -27,6 +27,7 @@
     },
     "globals": {
         "Plotly": "readable",
-        "duomenysRackausko": "readable"
+        "duomenysRackausko": "readable",
+        "math": "readable"
     }
 }
