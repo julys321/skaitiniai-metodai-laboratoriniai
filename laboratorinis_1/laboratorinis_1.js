@@ -132,13 +132,31 @@ class Lentele3 {
         const yMinRadius = Math.min.apply(Math, this.scatter.y) - 1;
         const yMaxRadius = Math.max.apply(Math, this.scatter.y) + 1;
         return {
+            title: {
+                text: 'Maziausiu kvadratu metodas'
+            },
             xaxis: {
+                title: {
+                    text: 'x',
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: '#7f7f7f'
+                    }
+                },
                 range: [xMinRadius, xMaxRadius]
             },
             yaxis: {
+                title: {
+                    text: 'y',
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: '#7f7f7f'
+                    }
+                },
                 range: [yMinRadius, yMaxRadius]
             }
-
         };
     }
 }
