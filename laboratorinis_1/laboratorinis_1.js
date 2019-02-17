@@ -37,9 +37,9 @@ function drawUzd5() {
 
 function drawUzd6() {
     const lab1Uzd6Document = document.getElementById('lab1-uzd6');
-    const X = [0, 1, -1, 100, 20];
-    const Y = [1, 0, -1, 20, 100];
-    X == Y ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
+    const X = tf.tensor([0, 1, -1, 100, 20]);
+    const Y = tf.tensor([1, 0, -1, 20, 100]);
+    X.equal(Y).sum().dataSync()[0] ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
 }
 class Table1 {
     constructor() {
