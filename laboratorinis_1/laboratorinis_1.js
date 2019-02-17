@@ -30,7 +30,8 @@ function drawUzd4() {
 }
 
 function drawUzd5() {
-    drawUzd2();
+    const lab1Uzd5Document = document.getElementById('lab1-uzd5');
+    Plotly.react(lab1Uzd5Document, [new Table2]);
 }
 class Table1 {
     constructor() {
