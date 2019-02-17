@@ -1,20 +1,38 @@
 window.onload = () => {
-    const lentele1 = new Lentele1;
-    const lab1Uzd1Document = document.getElementById('lab1-uzd1');
-    Plotly.react(lab1Uzd1Document, [lentele1.data], lentele1.layout);
-
-    const lab1Uzd2Document = document.getElementById('lab1-uzd2');
-    Plotly.react(lab1Uzd2Document, [new Lentele2]);
-
-    const lentele3 = new Lentele3;
-    const lab1Uzd3Document = document.getElementById('lab1-uzd3');
-    Plotly.react(lab1Uzd3Document, [lentele3.scatter, lentele3.trace], lentele3.layout);
-
-    const lentele4 = new Lentele4;
-    const lab1Uzd4Document = document.getElementById('lab1-uzd4');
-    Plotly.react(lab1Uzd4Document, [lentele4.getTrace(1), lentele4.getTrace(2), lentele4.getTrace(3)], lentele4.layout);
+    drawUzd1();
+    drawUzd2();
+    drawUzd3();
+    drawUzd4();
+    drawUzd5();
 };
-class Lentele1 {
+
+function drawUzd1() {
+    const table = new Table1;
+    const lab1Uzd1Document = document.getElementById('lab1-uzd1');
+    Plotly.react(lab1Uzd1Document, [table.data], table.layout);
+}
+
+function drawUzd2() {
+    const lab1Uzd2Document = document.getElementById('lab1-uzd2');
+    Plotly.react(lab1Uzd2Document, [new Table2]);
+}
+
+function drawUzd3() {
+    const table = new Table3;
+    const lab1Uzd3Document = document.getElementById('lab1-uzd3');
+    Plotly.react(lab1Uzd3Document, [table.scatter, table.trace], table.layout);
+}
+
+function drawUzd4() {
+    const table = new Table4;
+    const lab1Uzd4Document = document.getElementById('lab1-uzd4');
+    Plotly.react(lab1Uzd4Document, [table.getTrace(1), table.getTrace(2), table.getTrace(3)], table.layout);
+}
+
+function drawUzd5() {
+    drawUzd2();
+}
+class Table1 {
     constructor() {
         this.data = {
             x: [0, 10, -3, 4],
@@ -49,7 +67,7 @@ class Lentele1 {
     }
 }
 
-class Lentele2 {
+class Table2 {
     constructor() {
         const values = [
             [],
@@ -98,7 +116,7 @@ class Lentele2 {
     }
 }
 
-class Lentele3 {
+class Table3 {
     constructor() {
         this.scatter = {
             x: [],
@@ -156,7 +174,7 @@ class Lentele3 {
     }
 }
 
-class Lentele4 {
+class Table4 {
     constructor() {}
     getTrace(k) {
         const expr = math.compile(k + 'x+3');
