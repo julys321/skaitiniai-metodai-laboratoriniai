@@ -4,6 +4,7 @@ window.onload = () => {
     drawUzd3();
     drawUzd4();
     drawUzd5();
+    drawUzd6();
 };
 
 function drawUzd1() {
@@ -32,6 +33,13 @@ function drawUzd4() {
 function drawUzd5() {
     const lab1Uzd5Document = document.getElementById('lab1-uzd5');
     Plotly.react(lab1Uzd5Document, [new Table2]);
+}
+
+function drawUzd6() {
+    const lab1Uzd6Document = document.getElementById('lab1-uzd6');
+    const X = [0, 1, -1, 100, 20];
+    const Y = [1, 0, -1, 20, 100];
+    X == Y ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
 }
 class Table1 {
     constructor() {
