@@ -55,6 +55,11 @@ function drawUzd7() {
 
 function drawUzd8() {
     const lab1Uzd8Document = document.getElementById('lab1-uzd8');
+    let d = 2;
+    while(d >= 0.001){
+        d/=2;
+        lab1Uzd8Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + d + '</p>';
+    }
 }
 class Table1 {
     constructor() {
