@@ -44,6 +44,12 @@ function drawUzd6() {
 }
 
 function drawUzd7() {
+    const lab1Uzd7Document = document.getElementById('lab1-uzd7');
+    lab1Uzd7Document.innerHTML += '<b>&ensp;&ensp;Numeriai gretimu pajamu, kurios sutapo</b>';
+    duomenysRackausko.forEach((value, index) => {
+        if (value.Pajamos == duomenysRackausko[index + 1].Pajamos)
+            lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + index + ' ir ' + index + 1 + '</p>';
+    });
 }
 class Table1 {
     constructor() {
