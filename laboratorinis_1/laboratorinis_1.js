@@ -47,17 +47,18 @@ function drawUzd6() {
 function drawUzd7() {
     const lab1Uzd7Document = document.getElementById('lab1-uzd7');
     lab1Uzd7Document.innerHTML += '<b>&ensp;&ensp;Numeriai gretimu pajamu, kurios sutapo</b>';
-    duomenysRackausko.forEach((value, index) => {
-        if (value.Pajamos == duomenysRackausko[index + 1].Pajamos)
-            lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + index + ' ir ' + index + 1 + '</p>';
-    });
+    for(let i=0;i<duomenysRackausko.length-1;i++){
+        if (duomenysRackausko[i].Pajamos == duomenysRackausko[i+1].Pajamos) {
+            lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + i + ' ir ' + (i+1) + '</p>';
+        }
+    }
 }
 
 function drawUzd8() {
     const lab1Uzd8Document = document.getElementById('lab1-uzd8');
     let d = 2;
-    while(d >= 0.001){
-        d/=2;
+    while (d >= 0.001) {
+        d /= 2;
         lab1Uzd8Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + d + '</p>';
     }
 }
