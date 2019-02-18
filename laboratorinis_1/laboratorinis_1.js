@@ -5,6 +5,7 @@ window.onload = () => {
     drawUzd4();
     drawUzd5();
     drawUzd6();
+    drawUzd7();
 };
 
 function drawUzd1() {
@@ -40,6 +41,9 @@ function drawUzd6() {
     const X = tf.tensor([0, 1, -1, 100, 20]);
     const Y = tf.tensor([1, 0, -1, 20, 100]);
     X.equal(Y).sum().dataSync()[0] ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
+}
+
+function drawUzd7() {
 }
 class Table1 {
     constructor() {
