@@ -6,6 +6,7 @@ window.onload = () => {
     drawUzd5();
     drawUzd6();
     drawUzd7();
+    drawUzd8();
 };
 
 function drawUzd1() {
@@ -50,6 +51,10 @@ function drawUzd7() {
         if (value.Pajamos == duomenysRackausko[index + 1].Pajamos)
             lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + index + ' ir ' + index + 1 + '</p>';
     });
+}
+
+function drawUzd8() {
+    const lab1Uzd8Document = document.getElementById('lab1-uzd8');
 }
 class Table1 {
     constructor() {
