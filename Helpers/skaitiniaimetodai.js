@@ -16,12 +16,11 @@ function SkaitiniaiMetodai() {
         //result = math.divide(cartesianProduct((xi) => math.subtract(x,xi), (i) => i != row, data), cartesianProduct((xi) => math.subtract(data[row].x,xi), (i) => i != row), data);
         return result;
     };
-    //FIXME
-    this.calcCartesianProduct = function (f, data, condition = true) {
+    this.calcCartesianProduct = function (f, n, data, condition = () => true) {
         let result = math.bignumber(1);
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < n; i++) {
             if (condition(i)) {
-                result = math.multiply(result, f(data.x[i]));
+                result = math.multiply(result, f(data[i].x));
             }
         }
         return result;
@@ -35,6 +34,18 @@ function SkaitiniaiMetodai() {
             }
         }
         return result;
+    };
+    this.calcApproximationUsingNewton = function (x, row, data) {
+        let newtonTable = this.calcNewtonRatiosTable(data, row);
+        newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 4)));
+        let approximation = math.bignumber(0);
+        if (row == 1) {
+            approximation = math.add(data[0].y, math.multiply(math.subtract(x, data[0].x), newtonTable[0][row]));
+        } else {
+            approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row, data), newtonTable[row - 1][row]);
+            approximation = math.add(this.calcApproximationUsingNewton(x, row - 1, data), approximation);
+        }
+        return approximation;
     };
     this.calcNewtonRatiosTable = function (data, numberOfRows) {
         let newtonTable = [];
