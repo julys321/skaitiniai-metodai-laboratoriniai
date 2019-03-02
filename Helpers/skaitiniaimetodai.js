@@ -36,4 +36,20 @@ function SkaitiniaiMetodai() {
         }
         return result;
     };
+    this.calcNewtonTable = function (data, numberOfRows) {
+        let newtonTable = [];
+        for (let k = 0; k < numberOfRows; k++) {
+            newtonTable.push([]);
+            for (let i = 0; i < data.length; i++) {
+                if (i <= k) {
+                    newtonTable[k].push('-');
+                } else if (k == 0) {
+                    newtonTable[k].push(math.divide(math.subtract(data[i - 1].y, data[i].y), math.subtract(data[i - 1].x, data[i].x)));
+                } else {
+                    newtonTable[k].push(math.divide(math.subtract(newtonTable[k - 1][i - 1], newtonTable[k - 1][i]), math.subtract(data[i - 1 - k].x, data[i].x)));
+                }
+            }
+        }
+        return newtonTable;
+    }
 }
