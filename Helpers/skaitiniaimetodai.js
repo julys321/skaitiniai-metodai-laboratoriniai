@@ -36,7 +36,7 @@ function SkaitiniaiMetodai() {
         }
         return result;
     };
-    this.calcNewtonTable = function (data, numberOfRows) {
+    this.calcNewtonRatiosTable = function (data, numberOfRows) {
         let newtonTable = [];
         for (let k = 0; k < numberOfRows; k++) {
             newtonTable.push([]);
@@ -51,5 +51,5 @@ function SkaitiniaiMetodai() {
             }
         }
         return newtonTable;
-    }
+    };
 }

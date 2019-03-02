@@ -2,8 +2,8 @@ var data = [];
 window.onload = () => {
     data = laboratorinis2Uzd1Data.map(e => {
         return {
-            x: e.Euribor,
-            y: e.Diena
+            x: e.Diena,
+            y: e.Euribor
         };
     });
     // data = [{
@@ -25,13 +25,13 @@ window.onload = () => {
     //     x: 2,
     //     y: -21
     // }];
-    drawUzd1NewtonTable();
+    drawUzd1NewtonRatiosTable();
 };
 
-function drawUzd1NewtonTable() {
+function drawUzd1NewtonRatiosTable() {
     const drawAtDocument = document.getElementById('uzd1-newton-table');
-    let newtonTable = skaitiniaiMetodai.calcNewtonTable(data, data.length - 1);
-    newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e)));
+    let newtonTable = skaitiniaiMetodai.calcNewtonRatiosTable(data, data.length - 1);
+    newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 4)));
     let table = {
         type: 'table',
         header: {
