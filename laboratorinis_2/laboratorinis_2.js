@@ -6,7 +6,8 @@ window.onload = () => {
         };
     });
     drawUzd1NewtonRatiosTable(data);
-    drawUzd1(data);
+    drawUzd1(data,'newton');
+    drawUzd1(data,'lagrange');
     //console.log(calcApproximationValuesLag(2, data).toString())
 };
 
@@ -29,14 +30,22 @@ function drawUzd1NewtonRatiosTable(data) {
     Plotly.react(drawAtDocument, [table]);
 }
 
-function drawUzd1(data) {
+function drawUzd1(data, methodToUse) {
+    let drawAtDocument = null;
     let tableValues = [];
     let x = 2;
-    tableValues.push(calcApproximationValuesNewt(x, data));
+    if(methodToUse == 'newton'){
+        drawAtDocument = document.getElementById('uzd1-table-newt');
+        tableValues.push(calcApproximationValuesNewt(x, data));
+    }else {
+        drawAtDocument = document.getElementById('uzd1-table-lagr');
+        tableValues.push(calcApproximationValuesLag(x, data));
+    }
+    
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
     tableValues.push(tableValues[1].map(e => math.abs(math.subtract(math.bignumber(0.231), e))));
     tableValues.push(calcErrorValues(tableValues[1]));
-    const drawAtDocument = document.getElementById('uzd1-table');
+    
     let table = {
         type: 'table',
         header: {
