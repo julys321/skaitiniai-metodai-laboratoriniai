@@ -33,3 +33,9 @@ var laboratorinis2Uzd1Data = [
         Euribor: 0.202
     }
 ];
+
+/* exported laboratorinis2Uzd2Data */
+var laboratorinis2Uzd2Data = {
+    Laikotarpis: [1, 2, 5, 6, 7, 8],
+    DuomenuSrautasMB: [65,2, 27,1, 52,7, 87, 89,7, 89,6]
+};
