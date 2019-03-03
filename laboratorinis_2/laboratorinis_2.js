@@ -34,11 +34,13 @@ function drawUzd1(data) {
     let x = 2;
     tableValues.push(calcApproximationValuesNewt(x, data));
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
+    tableValues.push(tableValues[1].map(e => math.abs(math.subtract(math.bignumber(0.231), e))));
+    tableValues.push(calcErrorValues(tableValues[1]));
     const drawAtDocument = document.getElementById('uzd1-table');
     let table = {
         type: 'table',
         header: {
-            values: ['Eile', 'Artinys']
+            values: ['Eile', 'Artinys', 'Reali paklaida', 'Paklaidos ivertis']
         },
         cells: {
             values: tableValues
@@ -62,4 +64,12 @@ function calcApproximationValuesLag(x, data) {
         approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, i, data), 4));
     }
     return approximationValues;
+}
+
+function calcErrorValues(approximationValues) {
+    let errorValues = ['-'];
+    for (let i = 1; i < approximationValues.length; i++) {
+        errorValues.push(math.abs(math.subtract(approximationValues[i], approximationValues[i - 1])));
+    }
+    return errorValues;
 }
