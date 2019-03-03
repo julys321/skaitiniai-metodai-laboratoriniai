@@ -145,6 +145,10 @@ function calcUzd2ApproximationValuesLag(x, data) {
 function drawUzd3(data) {
     let x = 17;
     let n = 4;
+    //TODO: remove
+    //pasitikrinimui
+    let pasitikrinimui = calcUzd2ApproximationValuesLag(x, data).map(e=>e.toString());
+    console.log('uzd3 all aproximations',pasitikrinimui);
     let bestData = pickBestData(x, data, n);
     let drawAtDocument = document.getElementById('uzd3-table-lagr');
     let tableValues = [
