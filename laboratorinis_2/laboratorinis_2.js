@@ -6,8 +6,8 @@ window.onload = () => {
         };
     });
     drawUzd1NewtonRatiosTable(data);
-    drawUzd1(data,'newton');
-    drawUzd1(data,'lagrange');
+    drawUzd1(data, 'newton');
+    drawUzd1(data, 'lagrange');
     data = laboratorinis2Uzd2Data.Laikotarpis.map((e, i) => {
         return {
             x: laboratorinis2Uzd2Data.Laikotarpis[i],
@@ -15,6 +15,13 @@ window.onload = () => {
         };
     });
     drawUzd2(data);
+    data = laboratorinis2Uzd3Data.Gylis.map((e, i) => {
+        return {
+            x: laboratorinis2Uzd3Data.Gylis[i],
+            y: laboratorinis2Uzd3Data.Trukme[i]
+        };
+    });
+    drawUzd3(data);
 };
 
 function drawUzd1NewtonRatiosTable(data) {
@@ -39,7 +46,7 @@ function drawUzd1NewtonRatiosTable(data) {
 function drawUzd1(data, methodToUse) {
     let drawAtDocument = null;
     let tableValues = [];
-    let x = 2;
+    let x = 17;
     if (methodToUse == 'newton') {
         drawAtDocument = document.getElementById('uzd1-table-newt');
         tableValues.push(calcApproximationValuesNewt(x, data));
@@ -133,4 +140,56 @@ function calcUzd2ApproximationValuesLag(x, data) {
         approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, 3, points), 4));
     }
     return approximationValues;
+}
+
+function drawUzd3(data) {
+    let x = 17;
+    let n = 4;
+    let bestData = pickBestData(x, data, n);
+    let drawAtDocument = document.getElementById('uzd3-table-lagr');
+    let tableValues = [
+        []
+    ];
+    tableValues[0].push(bestData.reduce((acc, cur) => {
+        return (data.indexOf(cur) + 1) + acc;
+    }, '').split('').sort().join(''));
+    tableValues.push(calcUzd3ApproximationValuesLag(x, bestData));
+    let table = {
+        type: 'table',
+        header: {
+            values: ['Duomenu rinkinys', 'Artinys']
+        },
+        cells: {
+            values: tableValues
+        }
+    };
+    Plotly.react(drawAtDocument, [table]);
+}
+
+function calcUzd3ApproximationValuesLag(x, data) {
+    let approximationValues = [];
+    approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, 3, data), 4));
+    return approximationValues;
+}
+
+function pickBestData(x, data, n) {
+    let bestData = [];
+    let xDistArr = data.map(e => math.subtract(x, e.x));
+    let xLeftNeighbor = data[xDistArr.indexOf(Math.min(...xDistArr.filter(e => e > 0)))];
+    let xRightNeighbor = data[xDistArr.indexOf(Math.max(...xDistArr.filter(e => e < 0)))];
+    let middlePoint = math.divide(math.abs(math.subtract(xLeftNeighbor.y, xRightNeighbor.y)), 2);
+    middlePoint = math.add(middlePoint, Math.min(xLeftNeighbor.y, xRightNeighbor.y));
+    let dataWithDist = data.map(e => {
+        return {
+            data: e,
+            dist: {
+                y: math.abs(math.subtract(middlePoint, e.y))
+            }
+        };
+    });
+    dataWithDist = dataWithDist.sort((a, b) => a.dist.y - b.dist.y);
+    for (let i = 0; i < n + 1; i++) {
+        bestData.push(dataWithDist[i].data);
+    }
+    return bestData;
 }

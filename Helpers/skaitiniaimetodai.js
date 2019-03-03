@@ -31,7 +31,7 @@ function SkaitiniaiMetodai() {
             approximation = math.add(data[0].y, math.multiply(math.subtract(x, data[0].x), newtonTable[0][row]));
         } else {
             approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row - 1, data), newtonTable[row - 1][row]);
-            approximation = math.add(this.calcApproximationUsingNewton(x, row - 1, data), approximation);
+            approximation = math.add(math.round(this.calcApproximationUsingNewton(x, row - 1, data), 15), approximation);
         }
         return approximation;
     };
