@@ -7,6 +7,7 @@ window.onload = () => {
     });
     drawUzd1NewtonRatiosTable(data);
     drawUzd1(data);
+    //console.log(calcApproximationValuesLag(2, data).toString())
 };
 
 function drawUzd1NewtonRatiosTable(data) {
@@ -31,8 +32,8 @@ function drawUzd1NewtonRatiosTable(data) {
 function drawUzd1(data) {
     let tableValues = [];
     let x = 2;
-    tableValues.push(calcApproximationValues(x, data));
-    tableValues.unshift(tableValues[0].map((e, i) => i));
+    tableValues.push(calcApproximationValuesNewt(x, data));
+    tableValues.unshift(tableValues[0].map((e, i) => i + 1));
     const drawAtDocument = document.getElementById('uzd1-table');
     let table = {
         type: 'table',
@@ -44,12 +45,21 @@ function drawUzd1(data) {
         }
     };
     Plotly.react(drawAtDocument, [table]);
+
 }
 
-function calcApproximationValues(x, data) {
+function calcApproximationValuesNewt(x, data) {
     let approximationValues = [];
     for (let i = 1; i < data.length; i++) {
-        approximationValues.push(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data));
+        approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), 4));
+    }
+    return approximationValues;
+}
+
+function calcApproximationValuesLag(x, data) {
+    let approximationValues = [];
+    for (let i = 1; i < data.length; i++) {
+        approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, i, data), 4));
     }
     return approximationValues;
 }

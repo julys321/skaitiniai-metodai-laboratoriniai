@@ -2,47 +2,35 @@
 var skaitiniaiMetodai = new SkaitiniaiMetodai();
 
 function SkaitiniaiMetodai() {
-    //TODO: should be done better
-    this.calcLagrange = function (row, x, data) {
+    this.calcApproximationUsingLagrange = function (x, n, data) {
         let result = math.bignumber(0);
-        for (let i = 0; i <= row; i++) {
-            result = math.add(result, math.multiply(this.calcLagrangeConst(i, x, data), data[i].y));
+        for (let i = 0; i <= n; i++) {
+            result = math.add(result, math.multiply(this.calcLagrangeConst(x, i, n, data), data[i].y));
         }
         return result;
     };
-    this.calcLagrangeConst = function (row, x, data) {
-        let result = math.divide(this.cancerCycle(data, x, row), this.cancerCycle(data, data[row].x, row));
-        //TODO: finish
-        //result = math.divide(cartesianProduct((xi) => math.subtract(x,xi), (i) => i != row, data), cartesianProduct((xi) => math.subtract(data[row].x,xi), (i) => i != row), data);
+    this.calcLagrangeConst = function (x, row, n, data) {
+        let result = this.calcCartesianProduct((xi) => math.subtract(x, xi), n, data, (i) => i != row);
+        result = math.divide(result, this.calcCartesianProduct((xi) => math.subtract(data[row].x, xi), n, data, (i) => i != row));
         return result;
     };
     this.calcCartesianProduct = function (f, n, data, condition = () => true) {
         let result = math.bignumber(1);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i <= n; i++) {
             if (condition(i)) {
                 result = math.multiply(result, f(data[i].x));
             }
         }
         return result;
     };
-    //TODO: replace by cartesianProduct
-    this.cancerCycle = function (data, x, rowToIgnore = -1) {
-        let result = math.bignumber(1);
-        for (let i = 0; i < data.length; i++) {
-            if (i != rowToIgnore) {
-                result = math.multiply(result, math.subtract(x, data[i].x));
-            }
-        }
-        return result;
-    };
     this.calcApproximationUsingNewton = function (x, row, data) {
         let newtonTable = this.calcNewtonRatiosTable(data, row);
-        newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 4)));
+        newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 15)));
         let approximation = math.bignumber(0);
         if (row == 1) {
             approximation = math.add(data[0].y, math.multiply(math.subtract(x, data[0].x), newtonTable[0][row]));
         } else {
-            approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row, data), newtonTable[row - 1][row]);
+            approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row - 1, data), newtonTable[row - 1][row]);
             approximation = math.add(this.calcApproximationUsingNewton(x, row - 1, data), approximation);
         }
         return approximation;
