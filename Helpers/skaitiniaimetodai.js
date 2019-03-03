@@ -9,9 +9,9 @@ function SkaitiniaiMetodai() {
         }
         return result;
     };
-    this.calcLagrangeConst = function (x, row, n, data) {
-        let result = this.calcCartesianProduct((xi) => math.subtract(x, xi), n, data, (i) => i != row);
-        result = math.divide(result, this.calcCartesianProduct((xi) => math.subtract(data[row].x, xi), n, data, (i) => i != row));
+    this.calcLagrangeConst = function (x, k, n, data) {
+        let result = this.calcCartesianProduct((xi) => math.subtract(x, xi), n, data, (i) => i != k);
+        result = math.divide(result, this.calcCartesianProduct((xi) => math.subtract(data[k].x, xi), n, data, (i) => i != k));
         return result;
     };
     this.calcCartesianProduct = function (f, n, data, condition = () => true) {
