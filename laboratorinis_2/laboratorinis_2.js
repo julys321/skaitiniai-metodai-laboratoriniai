@@ -46,7 +46,7 @@ function drawUzd1NewtonRatiosTable(data) {
 function drawUzd1(data, methodToUse) {
     let drawAtDocument = null;
     let tableValues = [];
-    let x = 17;
+    let x = 2;
     if (methodToUse == 'newton') {
         drawAtDocument = document.getElementById('uzd1-table-newt');
         tableValues.push(calcApproximationValuesNewt(x, data));
