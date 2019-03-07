@@ -1,6 +1,9 @@
 window.onload = () => {
-    loadLab1();
+    loadCalculator();
 
+    document.getElementById('calculator-button').onclick = () => {
+        loadCalculator();
+    };
     document.getElementById('lab1-button').onclick = () => {
         loadLab1();
     };
@@ -8,6 +11,11 @@ window.onload = () => {
         loadLab2();
     };
 };
+
+function loadCalculator() {
+    document.getElementById('content')
+        .innerHTML = '<object type="text/html" data="calculator/calculator.html" ></object>';
+}
 
 function loadLab1() {
     document.getElementById('content')
