@@ -6,7 +6,6 @@
   "author": "julys321",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs": "^0.15.2",
-    "mathjs": "^5.4.2"
+    "mathjs": "^5.6.0"
   }
 }
