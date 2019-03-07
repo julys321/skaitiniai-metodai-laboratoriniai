@@ -1,5 +1,5 @@
 window.onload = () => {
-    loadLab1();
+    loadLab2();
 
     document.getElementById('lab1-button').onclick = () => {
         loadLab1();

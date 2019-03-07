@@ -1,27 +1,45 @@
 window.onload = () => {
-    let data = laboratorinis2Uzd1Data.map(e => {
+    // let data = laboratorinis2Uzd1Data.map(e => {
+    //     return {
+    //         x: e.Diena,
+    //         y: e.Euribor
+    //     };
+    // });
+    // drawUzd1NewtonRatiosTable(data);
+    // drawUzd1(data, 'newton');
+    // drawUzd1(data, 'lagrange');
+    // data = laboratorinis2Uzd2Data.Laikotarpis.map((e, i) => {
+    //     return {
+    //         x: laboratorinis2Uzd2Data.Laikotarpis[i],
+    //         y: laboratorinis2Uzd2Data.DuomenuSrautasMB[i]
+    //     };
+    // });
+    // drawUzd2(data);
+    //ANDRIAUS MAGIJA
+    // let data = laboratorinis2Uzd3Data.Gylis.map((e, i) => {
+    //     return {
+    //         x: laboratorinis2Uzd3Data.Gylis[i],
+    //         y: laboratorinis2Uzd3Data.Trukme[i]
+    //     };
+    // });
+    // drawUzd1(data, 'newton');
+    //kamiles magija
+    x = [1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3];
+    y = [1.23, 0.85, 0.82, 0.8, 0.7, 0.5, 0.39, 0.32, 0.27, 0.22, 0.19, 0.13, 0.11, 0.09, 0.08, 0.07, 0.06, 0.06, 0.05, 0.04];
+    let data = x.map((e, i) => {
         return {
-            x: e.Diena,
-            y: e.Euribor
+            x: x[i],
+            y: y[i]
         };
     });
-    drawUzd1NewtonRatiosTable(data);
-    drawUzd1(data, 'newton');
     drawUzd1(data, 'lagrange');
-    data = laboratorinis2Uzd2Data.Laikotarpis.map((e, i) => {
-        return {
-            x: laboratorinis2Uzd2Data.Laikotarpis[i],
-            y: laboratorinis2Uzd2Data.DuomenuSrautasMB[i]
-        };
-    });
-    drawUzd2(data);
-    data = laboratorinis2Uzd3Data.Gylis.map((e, i) => {
-        return {
-            x: laboratorinis2Uzd3Data.Gylis[i],
-            y: laboratorinis2Uzd3Data.Trukme[i]
-        };
-    });
-    drawUzd3(data);
+    // data = laboratorinis2Uzd3Data.Gylis.map((e, i) => {
+    //     return {
+    //         x: laboratorinis2Uzd3Data.Gylis[i],
+    //         y: laboratorinis2Uzd3Data.Trukme[i]
+    //     };
+    // });
+    // drawUzd3(data);
 };
 
 function drawUzd1NewtonRatiosTable(data) {
@@ -46,7 +64,7 @@ function drawUzd1NewtonRatiosTable(data) {
 function drawUzd1(data, methodToUse) {
     let drawAtDocument = null;
     let tableValues = [];
-    let x = 2;
+    let x = 1.05;
     if (methodToUse == 'newton') {
         drawAtDocument = document.getElementById('uzd1-table-newt');
         tableValues.push(calcApproximationValuesNewt(x, data));
@@ -56,7 +74,7 @@ function drawUzd1(data, methodToUse) {
     }
 
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
-    tableValues.push(tableValues[1].map(e => math.abs(math.subtract(math.bignumber(0.231), e))));
+    tableValues.push(tableValues[1].map(e => math.abs(math.subtract(math.bignumber(0), e))));
     tableValues.push(calcErrorValues(tableValues[1]));
 
     let table = {
@@ -146,8 +164,8 @@ function drawUzd3(data) {
     let x = 17;
     let n = 4;
 
-    let pasitikrinimui = calcUzd2ApproximationValuesLag(x, data).map(e=>e.toString());
-    console.info('Lab2Uzd3 all aproximations',pasitikrinimui);
+    let pasitikrinimui = calcUzd2ApproximationValuesLag(x, data).map(e => e.toString());
+    console.info('Lab2Uzd3 all aproximations', pasitikrinimui);
     let bestData = pickBestData(x, data, n);
     let drawAtDocument = document.getElementById('uzd3-table-lagr');
     let tableValues = [

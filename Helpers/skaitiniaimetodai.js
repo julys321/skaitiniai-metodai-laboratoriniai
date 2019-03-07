@@ -5,7 +5,7 @@ function SkaitiniaiMetodai() {
     this.calcApproximationUsingLagrange = function (x, n, data) {
         let result = math.bignumber(0);
         for (let i = 0; i <= n; i++) {
-            result = math.add(result, math.multiply(this.calcLagrangeConst(x, i, n, data), data[i].y));
+            result = math.add(result, math.multiply(math.round(this.calcLagrangeConst(x, i, n, data),15), data[i].y));
         }
         return result;
     };
@@ -18,7 +18,7 @@ function SkaitiniaiMetodai() {
         let result = math.bignumber(1);
         for (let i = 0; i <= n; i++) {
             if (condition(i)) {
-                result = math.multiply(result, f(data[i].x));
+                result = math.multiply(result, math.round(f(data[i].x),15));
             }
         }
         return result;
@@ -30,7 +30,7 @@ function SkaitiniaiMetodai() {
         if (row == 1) {
             approximation = math.add(data[0].y, math.multiply(math.subtract(x, data[0].x), newtonTable[0][row]));
         } else {
-            approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row - 1, data), newtonTable[row - 1][row]);
+            approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row - 1, data), math.round(newtonTable[row - 1][row],5));
             approximation = math.add(math.round(this.calcApproximationUsingNewton(x, row - 1, data), 15), approximation);
         }
         return approximation;
