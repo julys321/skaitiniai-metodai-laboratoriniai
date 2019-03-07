@@ -60,4 +60,11 @@ function SkaitiniaiMetodai() {
     this.calcRealErrors = function(approximations, realvalue) {
         return approximations.map(e => math.abs(math.subtract(math.bignumber(realvalue),e)));
     };
+    this.calcBiases = function (approximationValues) {
+        let errorValues = ['-'];
+        for (let i = 1; i < approximationValues.length; i++) {
+            errorValues.push(math.abs(math.subtract(approximationValues[i], approximationValues[i - 1])));
+        }
+        return errorValues;
+    };
 }

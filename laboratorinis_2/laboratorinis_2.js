@@ -57,8 +57,8 @@ function drawUzd1(data, methodToUse) {
     }
 
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
-    tableValues.push(skaitiniaiMetodai.calcRealError(tableValues[1],0.231));
-    tableValues.push(calcErrorValues(tableValues[1]));
+    tableValues.push(skaitiniaiMetodai.calcRealErrors(tableValues[1],0.231));
+    tableValues.push(skaitiniaiMetodai.calcBiases(tableValues[1]));
 
     let table = {
         type: 'table',
@@ -78,14 +78,6 @@ function calcApproximationValuesLag(x, data) {
         approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, i, data), 4));
     }
     return approximationValues;
-}
-
-function calcErrorValues(approximationValues) {
-    let errorValues = ['-'];
-    for (let i = 1; i < approximationValues.length; i++) {
-        errorValues.push(math.abs(math.subtract(approximationValues[i], approximationValues[i - 1])));
-    }
-    return errorValues;
 }
 
 function drawUzd2(data) {
