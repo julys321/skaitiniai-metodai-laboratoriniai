@@ -67,4 +67,11 @@ function SkaitiniaiMetodai() {
         }
         return errorValues;
     };
+    this.calcApproximationsUsingLagrange = function(x, data) {
+        let approximationValues = [];
+        for (let i = 1; i < data.length; i++) {
+            approximationValues.push(math.round(this.calcApproximationUsingLagrange(x, i, data), this.roundingPrecision));
+        }
+        return approximationValues;
+    };
 }

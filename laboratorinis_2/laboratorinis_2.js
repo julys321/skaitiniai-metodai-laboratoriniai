@@ -53,7 +53,7 @@ function drawUzd1(data, methodToUse) {
         tableValues.push(skaitiniaiMetodai.calcApproximationsUsingNewton(x, data));
     } else {
         drawAtDocument = document.getElementById('uzd1-table-lagr');
-        tableValues.push(calcApproximationValuesLag(x, data));
+        tableValues.push(skaitiniaiMetodai.calcApproximationsUsingLagrange(x, data));
     }
 
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
@@ -72,13 +72,7 @@ function drawUzd1(data, methodToUse) {
     Plotly.react(drawAtDocument, [table]);
 }
 
-function calcApproximationValuesLag(x, data) {
-    let approximationValues = [];
-    for (let i = 1; i < data.length; i++) {
-        approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingLagrange(x, i, data), 4));
-    }
-    return approximationValues;
-}
+
 
 function drawUzd2(data) {
     let drawAtDocument = document.getElementById('uzd2-table-lagr');
