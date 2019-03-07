@@ -25,7 +25,7 @@ function SkaitiniaiMetodai() {
     this.calcApproximationsUsingNewton = function (x, data) {
         let approximationValues = [];
         for (let i = 1; i < data.length; i++) {
-            approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), this.roundingPrecision));
+            approximationValues.push(math.round(this.calcApproximationUsingNewton(x, i, data), this.roundingPrecision));
         }
         return approximationValues;
     };
@@ -57,8 +57,8 @@ function SkaitiniaiMetodai() {
         }
         return newtonTable;
     };
-    this.calcRealErrors = function(approximations, realvalue) {
-        return approximations.map(e => math.abs(math.subtract(math.bignumber(realvalue),e)));
+    this.calcRealErrors = function (approximations, realvalue) {
+        return approximations.map(e => math.abs(math.subtract(math.bignumber(realvalue), e)));
     };
     this.calcBiases = function (approximationValues) {
         let errorValues = ['-'];
