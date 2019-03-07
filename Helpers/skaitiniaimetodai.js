@@ -2,6 +2,7 @@
 var skaitiniaiMetodai = new SkaitiniaiMetodai();
 
 function SkaitiniaiMetodai() {
+    this.roundingPrecision = 4;
     this.calcApproximationUsingLagrange = function (x, n, data) {
         let result = math.bignumber(0);
         for (let i = 0; i <= n; i++) {
@@ -23,22 +24,22 @@ function SkaitiniaiMetodai() {
         }
         return result;
     };
-    this.calcApproximationsUsingNewton = function (x, data, roundBy = 4) {
+    this.calcApproximationsUsingNewton = function (x, data) {
         let approximationValues = [];
         for (let i = 1; i < data.length; i++) {
-            approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), roundBy));
+            approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), this.roundingPrecision));
         }
         return approximationValues;
     };
     this.calcApproximationUsingNewton = function (x, row, data) {
         let newtonTable = this.calcNewtonRatiosTable(data, row);
-        newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 15)));
+        newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, this.roundingPrecision)));
         let approximation = math.bignumber(0);
         if (row == 1) {
             approximation = math.add(data[0].y, math.multiply(math.subtract(x, data[0].x), newtonTable[0][row]));
         } else {
             approximation = math.multiply(this.calcCartesianProduct((xi) => math.subtract(x, xi), row - 1, data), newtonTable[row - 1][row]);
-            approximation = math.add(math.round(this.calcApproximationUsingNewton(x, row - 1, data), 15), approximation);
+            approximation = math.add(math.round(this.calcApproximationUsingNewton(x, row - 1, data), this.roundingPrecision), approximation);
         }
         return approximation;
     };
