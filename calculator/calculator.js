@@ -1,25 +1,32 @@
 var skaitiniaiMetodai = new SkaitiniaiMetodai();
 skaitiniaiMetodai.roundingPrecision = 6;
+
 window.onload = () => {
     autoFillNewt();
-    document.getElementById('newton-approximations-errors-biases-calculate-button').onclick = () => {
-        let data = prepDataNewt();
-        let newtonAproximations = skaitiniaiMetodai.calcApproximationsUsingNewton(data.X, data.xyArr);
-        let realErrors = skaitiniaiMetodai.calcRealErrors(newtonAproximations, data.Y);
-        let biases = skaitiniaiMetodai.calcBiases(newtonAproximations, data.Y);
-        let drawAtDocument = document.getElementById('newton-approximations-errors-biases');
-        drawTable(drawAtDocument, newtonAproximations, realErrors, biases);
-    };
+    document.getElementById('newton-approximations-errors-biases-calculate-button').addEventListener('click', calculateUsingNewt);
     autoFillLagr();
-    document.getElementById('lagrange-approximations-errors-biases-calculate-button').onclick = () => {
-        let data = prepDataLagr();
-        let newtonAproximations = skaitiniaiMetodai.calcApproximationsUsingLagrange(data.X, data.xyArr);
-        let realErrors = skaitiniaiMetodai.calcRealErrors(newtonAproximations, data.Y);
-        let biases = skaitiniaiMetodai.calcBiases(newtonAproximations, data.Y);
-        let drawAtDocument = document.getElementById('lagrange-approximations-errors-biases');
-        drawTable(drawAtDocument, newtonAproximations, realErrors, biases);
-    };
+    document.getElementById('lagrange-approximations-errors-biases-calculate-button').addEventListener('click', calculateUsingLagr);
 };
+
+function calculateUsingNewt() {
+    let data = prepDataNewt();
+    let newtonAproximations = skaitiniaiMetodai.calcApproximationsUsingNewton(data.X, data.xyArr);
+    let realErrors = skaitiniaiMetodai.calcRealErrors(newtonAproximations, data.Y);
+    let biases = skaitiniaiMetodai.calcBiases(newtonAproximations, data.Y);
+    document.getElementById('newton-approximations-errors-biases').innerHTML += '<div id="result-table"><div>';
+    drawTable(newtonAproximations, realErrors, biases);
+    document.getElementById('newton-approximations-errors-biases-calculate-button').addEventListener('click', calculateUsingNewt);
+}
+
+function calculateUsingLagr() {
+    let data = prepDataLagr();
+    let newtonAproximations = skaitiniaiMetodai.calcApproximationsUsingLagrange(data.X, data.xyArr);
+    let realErrors = skaitiniaiMetodai.calcRealErrors(newtonAproximations, data.Y);
+    let biases = skaitiniaiMetodai.calcBiases(newtonAproximations, data.Y);
+    document.getElementById('lagrange-approximations-errors-biases').innerHTML += '<div id="result-table"><div>';
+    drawTable(newtonAproximations, realErrors, biases);
+    document.getElementById('lagrange-approximations-errors-biases-calculate-button').addEventListener('click', calculateUsingLagr);
+}
 
 function autoFillNewt() {
     document.getElementById('newton-approximations-errors-biases-x-table-values').value = '1 3 4 5 7 8 9 10'; //'1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3';
@@ -73,8 +80,7 @@ function prepDataLagr() {
 
 }
 
-function drawTable(HTMLelement, approximations = [], realErrors = [], biases = []) {
-    HTMLelement.innerHTML += '<div id="result-table"><div>';
+function drawTable(approximations = [], realErrors = [], biases = []) {
     let drawAtDocument = document.getElementById('result-table');
     let tableValues = [];
     tableValues.push(approximations);
