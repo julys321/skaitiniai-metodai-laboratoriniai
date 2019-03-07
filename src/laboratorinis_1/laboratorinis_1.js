@@ -1,65 +1,77 @@
-window.onload = () => {
-    drawUzd1();
-    drawUzd2();
-    drawUzd3();
-    drawUzd4();
-    drawUzd5();
-    drawUzd6();
-    drawUzd7();
-    drawUzd8();
-};
+import math from '../../node_modules/mathjs/index.js';
+import Plotly from '../../libs/plotly.js';
+import duomenysRackausko from './DuomenysRackausko.js';
+class Laboratorinis_1 {
+    constructor() {}
+    onload() {
+        this.drawUzd1();
+        this.drawUzd2();
+        this.drawUzd3();
+        this.drawUzd4();
+        this.drawUzd5();
+        this.drawUzd6();
+        this.drawUzd7();
+        this.drawUzd8();
+    }
 
-function drawUzd1() {
-    const table = new Table1;
-    const lab1Uzd1Document = document.getElementById('lab1-uzd1');
-    Plotly.react(lab1Uzd1Document, [table.data], table.layout);
-}
+    drawUzd1() {
+        const table = new Table1;
+        const lab1Uzd1Document = document.getElementById('lab1-uzd1');
+        Plotly.react(lab1Uzd1Document, [table.data], table.layout);
+    }
 
-function drawUzd2() {
-    const lab1Uzd2Document = document.getElementById('lab1-uzd2');
-    Plotly.react(lab1Uzd2Document, [new Table2]);
-}
+    drawUzd2() {
+        const lab1Uzd2Document = document.getElementById('lab1-uzd2');
+        Plotly.react(lab1Uzd2Document, [new Table2]);
+    }
 
-function drawUzd3() {
-    const table = new Table3;
-    const lab1Uzd3Document = document.getElementById('lab1-uzd3');
-    Plotly.react(lab1Uzd3Document, [table.scatter, table.trace], table.layout);
-}
+    drawUzd3() {
+        const table = new Table3;
+        const lab1Uzd3Document = document.getElementById('lab1-uzd3');
+        Plotly.react(lab1Uzd3Document, [table.scatter, table.trace], table.layout);
+    }
 
-function drawUzd4() {
-    const table = new Table4;
-    const lab1Uzd4Document = document.getElementById('lab1-uzd4');
-    Plotly.react(lab1Uzd4Document, [table.getTrace(1), table.getTrace(2), table.getTrace(3)], table.layout);
-}
+    drawUzd4() {
+        const table = new Table4;
+        const lab1Uzd4Document = document.getElementById('lab1-uzd4');
+        Plotly.react(lab1Uzd4Document, [table.getTrace(1), table.getTrace(2), table.getTrace(3)], table.layout);
+    }
 
-function drawUzd5() {
-    const lab1Uzd5Document = document.getElementById('lab1-uzd5');
-    Plotly.react(lab1Uzd5Document, [new Table2]);
-}
+    drawUzd5() {
+        const lab1Uzd5Document = document.getElementById('lab1-uzd5');
+        Plotly.react(lab1Uzd5Document, [new Table2]);
+    }
+    //TODO: fix, why i was using tensors?
+    drawUzd6() {
+        const lab1Uzd6Document = document.getElementById('lab1-uzd6');
+        const X = new Set([0, 1, -1, 100, 20]);
+        const Y = new Set([1, 0, -1, 20, 100]);
+        //TODO: refactoring needed
+        function eqSet(as, bs) {
+            if (as.size !== bs.size) return false;
+            for (var a of as) if (!bs.has(a)) return false;
+            return true;
+        }
+        eqSet(X,Y) ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
+    }
 
-function drawUzd6() {
-    const lab1Uzd6Document = document.getElementById('lab1-uzd6');
-    const X = tf.tensor([0, 1, -1, 100, 20]);
-    const Y = tf.tensor([1, 0, -1, 20, 100]);
-    X.equal(Y).sum().dataSync()[0] ? lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;sutampa</p>' : lab1Uzd6Document.innerHTML = '<p>&ensp;&ensp;nesutampa</p>';
-}
-
-function drawUzd7() {
-    const lab1Uzd7Document = document.getElementById('lab1-uzd7');
-    lab1Uzd7Document.innerHTML += '<b>&ensp;&ensp;Numeriai gretimu pajamu, kurios sutapo</b>';
-    for(let i=0;i<duomenysRackausko.length-1;i++){
-        if (duomenysRackausko[i].Pajamos == duomenysRackausko[i+1].Pajamos) {
-            lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + i + ' ir ' + (i+1) + '</p>';
+    drawUzd7() {
+        const lab1Uzd7Document = document.getElementById('lab1-uzd7');
+        lab1Uzd7Document.innerHTML += '<b>&ensp;&ensp;Numeriai gretimu pajamu, kurios sutapo</b>';
+        for (let i = 0; i < duomenysRackausko.length - 1; i++) {
+            if (duomenysRackausko[i].Pajamos == duomenysRackausko[i + 1].Pajamos) {
+                lab1Uzd7Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + i + ' ir ' + (i + 1) + '</p>';
+            }
         }
     }
-}
 
-function drawUzd8() {
-    const lab1Uzd8Document = document.getElementById('lab1-uzd8');
-    let d = 2;
-    while (d >= 0.001) {
-        d /= 2;
-        lab1Uzd8Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + d + '</p>';
+    drawUzd8() {
+        const lab1Uzd8Document = document.getElementById('lab1-uzd8');
+        let d = 2;
+        while (d >= 0.001) {
+            d /= 2;
+            lab1Uzd8Document.innerHTML += '<p>&ensp;&ensp;&ensp;' + d + '</p>';
+        }
     }
 }
 class Table1 {
@@ -96,7 +108,7 @@ class Table1 {
         };
     }
 }
-
+export default new Laboratorinis_1();
 class Table2 {
     constructor() {
         const values = [

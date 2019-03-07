@@ -1,4 +1,5 @@
 import calculator from './calculator/calculator.js';
+import laboratorinis_1 from './laboratorinis_1/laboratorinis_1.js';
 window.onload = () => {
     loadCalculator();
 
@@ -18,7 +19,7 @@ function loadCalculator() {
     xhr.open('GET', 'calculator/calculator.html', true);
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4) return;
-        if (this.status !== 200) return; // or whatever error handling you want
+        if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
         calculator.onload();
     };
@@ -32,8 +33,9 @@ function loadLab1() {
     xhr.open('GET', 'laboratorinis_1/laboratorinis_1.html', true);
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4) return;
-        if (this.status !== 200) return; // or whatever error handling you want
+        if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
+        laboratorinis_1.onload();
     };
     xhr.send();
 }
@@ -43,7 +45,7 @@ function loadLab2() {
     xhr.open('GET', 'laboratorinis_2/laboratorinis_2.html', true);
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4) return;
-        if (this.status !== 200) return; // or whatever error handling you want
+        if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
     };
     xhr.send();

@@ -1,4 +1,3 @@
-/* exported duomenysRackausko */
 var duomenysRackausko = [
     {
         'Pajamos': '258.3',
@@ -161,3 +160,4 @@ var duomenysRackausko = [
         'Islaidos': '269.03'
     }
 ];
+export default duomenysRackausko;
