@@ -23,6 +23,13 @@ function SkaitiniaiMetodai() {
         }
         return result;
     };
+    this.calcApproximationsUsingNewton = function (x, data, roundBy = 4) {
+        let approximationValues = [];
+        for (let i = 1; i < data.length; i++) {
+            approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), roundBy));
+        }
+        return approximationValues;
+    };
     this.calcApproximationUsingNewton = function (x, row, data) {
         let newtonTable = this.calcNewtonRatiosTable(data, row);
         newtonTable = newtonTable.map(e => e.map(e => e === '-' ? e : math.round(e, 15)));

@@ -49,7 +49,7 @@ function drawUzd1(data, methodToUse) {
     let x = 2;
     if (methodToUse == 'newton') {
         drawAtDocument = document.getElementById('uzd1-table-newt');
-        tableValues.push(calcApproximationValuesNewt(x, data));
+        tableValues.push(skaitiniaiMetodai.calcApproximationsUsingNewton(x, data));
     } else {
         drawAtDocument = document.getElementById('uzd1-table-lagr');
         tableValues.push(calcApproximationValuesLag(x, data));
@@ -69,14 +69,6 @@ function drawUzd1(data, methodToUse) {
         }
     };
     Plotly.react(drawAtDocument, [table]);
-}
-
-function calcApproximationValuesNewt(x, data) {
-    let approximationValues = [];
-    for (let i = 1; i < data.length; i++) {
-        approximationValues.push(math.round(skaitiniaiMetodai.calcApproximationUsingNewton(x, i, data), 4));
-    }
-    return approximationValues;
 }
 
 function calcApproximationValuesLag(x, data) {
