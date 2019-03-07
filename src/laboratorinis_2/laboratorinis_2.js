@@ -57,7 +57,7 @@ function drawUzd1(data, methodToUse) {
     }
 
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
-    tableValues.push(skaitiniaiMetodai.calcRealErrors(tableValues[1],0.231));
+    tableValues.push(skaitiniaiMetodai.calcRealErrors(tableValues[1], 0.231));
     tableValues.push(skaitiniaiMetodai.calcBiases(tableValues[1]));
 
     let table = {
@@ -125,8 +125,8 @@ function drawUzd3(data) {
     let x = 17;
     let n = 4;
 
-    let pasitikrinimui = calcUzd2ApproximationValuesLag(x, data).map(e=>e.toString());
-    console.info('Lab2Uzd3 all aproximations',pasitikrinimui);
+    let pasitikrinimui = calcUzd2ApproximationValuesLag(x, data).map(e => e.toString());
+    console.info('Lab2Uzd3 all aproximations', pasitikrinimui);
     let bestData = pickBestData(x, data, n);
     let drawAtDocument = document.getElementById('uzd3-table-lagr');
     let tableValues = [

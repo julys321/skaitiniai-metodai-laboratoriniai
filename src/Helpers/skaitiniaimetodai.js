@@ -1,5 +1,5 @@
-/* exported SkaitiniaiMetodai */
-function SkaitiniaiMetodai() {
+import math from '../../node_modules/mathjs/index.js';
+export default function SkaitiniaiMetodai() {
     this.roundingPrecision = 4;
     this.calcApproximationUsingLagrange = function (x, n, data) {
         let result = math.bignumber(0);

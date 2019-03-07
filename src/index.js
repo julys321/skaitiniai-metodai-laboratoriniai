@@ -1,3 +1,4 @@
+import calculator from './calculator/calculator.js';
 window.onload = () => {
     loadCalculator();
 
@@ -13,16 +14,37 @@ window.onload = () => {
 };
 
 function loadCalculator() {
-    document.getElementById('content')
-        .innerHTML = '<object type="text/html" data="calculator/calculator.html" style="width: 100%;  height: 100%;"></object>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'calculator/calculator.html', true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
+        if (this.status !== 200) return; // or whatever error handling you want
+        document.getElementById('content').innerHTML = this.responseText;
+        calculator.onload();
+    };
+    xhr.send();
 }
 
+
+
 function loadLab1() {
-    document.getElementById('content')
-        .innerHTML = '<object type="text/html" data="laboratorinis_1/laboratorinis_1.html" style="width: 100%;  height: 100%;"></object>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'laboratorinis_1/laboratorinis_1.html', true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
+        if (this.status !== 200) return; // or whatever error handling you want
+        document.getElementById('content').innerHTML = this.responseText;
+    };
+    xhr.send();
 }
 
 function loadLab2() {
-    document.getElementById('content')
-        .innerHTML = '<object type="text/html" data="laboratorinis_2/laboratorinis_2.html" style="width: 100%;  height: 100%;"></object>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'laboratorinis_2/laboratorinis_2.html', true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
+        if (this.status !== 200) return; // or whatever error handling you want
+        document.getElementById('content').innerHTML = this.responseText;
+    };
+    xhr.send();
 }
