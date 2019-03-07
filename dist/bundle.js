@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("window.onload = () => {\r\n    loadCalculator();\r\n\r\n    document.getElementById('calculator-button').onclick = () => {\r\n        loadCalculator();\r\n    };\r\n    document.getElementById('lab1-button').onclick = () => {\r\n        loadLab1();\r\n    };\r\n    document.getElementById('lab2-button').onclick = () => {\r\n        loadLab2();\r\n    };\r\n};\r\n\r\nfunction loadCalculator() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"calculator/calculator.html\" ></object>';\r\n}\r\n\r\nfunction loadLab1() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"laboratorinis_1/laboratorinis_1.html\" ></object>';\r\n}\r\n\r\nfunction loadLab2() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"laboratorinis_2/laboratorinis_2.html\" ></object>';\r\n}\n\n//# sourceURL=webpack:///./index.js?");
+eval("window.onload = () => {\r\n    loadCalculator();\r\n\r\n    document.getElementById('calculator-button').onclick = () => {\r\n        loadCalculator();\r\n    };\r\n    document.getElementById('lab1-button').onclick = () => {\r\n        loadLab1();\r\n    };\r\n    document.getElementById('lab2-button').onclick = () => {\r\n        loadLab2();\r\n    };\r\n};\r\n\r\nfunction loadCalculator() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"calculator/calculator.html\" ></object>';\r\n}\r\n\r\nfunction loadLab1() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"laboratorinis_1/laboratorinis_1.html\" ></object>';\r\n}\r\n\r\nfunction loadLab2() {\r\n    document.getElementById('content')\r\n        .innerHTML = '<object type=\"text/html\" data=\"laboratorinis_2/laboratorinis_2.html\" ></object>';\r\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
