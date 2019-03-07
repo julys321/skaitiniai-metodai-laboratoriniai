@@ -57,7 +57,7 @@ function drawUzd1(data, methodToUse) {
     }
 
     tableValues.unshift(tableValues[0].map((e, i) => i + 1));
-    tableValues.push(tableValues[1].map(e => math.abs(math.subtract(math.bignumber(0.231), e))));
+    tableValues.push(skaitiniaiMetodai.calcRealError(tableValues[1],0.231));
     tableValues.push(calcErrorValues(tableValues[1]));
 
     let table = {

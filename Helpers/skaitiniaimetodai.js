@@ -17,7 +17,7 @@ function SkaitiniaiMetodai() {
         let result = math.bignumber(1);
         for (let i = 0; i <= n; i++) {
             if (condition(i)) {
-                result = math.multiply(result, math.round(f(data[i].x),this.roundingPrecision));
+                result = math.multiply(result, math.round(f(data[i].x), this.roundingPrecision));
             }
         }
         return result;
@@ -56,5 +56,8 @@ function SkaitiniaiMetodai() {
             }
         }
         return newtonTable;
+    };
+    this.calcRealErrors = function(approximations, realvalue) {
+        return approximations.map(e => math.abs(math.subtract(math.bignumber(realvalue),e)));
     };
 }
