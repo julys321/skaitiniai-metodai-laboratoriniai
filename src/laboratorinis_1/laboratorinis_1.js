@@ -1,5 +1,5 @@
 import math from '../../node_modules/mathjs/index.js';
-import Plotly from '../../libs/plotly.js';
+import Plotly from '../../lib/plotly.js';
 import duomenysRackausko from './DuomenysRackausko.js';
 class Laboratorinis_1 {
     constructor() {}

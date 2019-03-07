@@ -1,6 +1,6 @@
 import SkaitiniaiMetodai from '../Helpers/skaitiniaimetodai.js';
 import math from '../../node_modules/mathjs/index.js';
-import Plotly from '../../libs/plotly.js';
+import Plotly from '../../lib/plotly.js';
 import {
     laboratorinis2Uzd1Data,
     laboratorinis2Uzd2Data,
