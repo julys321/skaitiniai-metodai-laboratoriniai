@@ -1,4 +1,3 @@
-/* exported laboratorinis2Uzd1Data */
 var laboratorinis2Uzd1Data = [
     {
         Diena: 1,
@@ -34,14 +33,17 @@ var laboratorinis2Uzd1Data = [
     }
 ];
 
-/* exported laboratorinis2Uzd2Data */
 var laboratorinis2Uzd2Data = {
     Laikotarpis: [1, 2, 5, 6, 7, 8],
-    DuomenuSrautasMB: [65,2, 27,1, 52,7, 87, 89,7, 89,6]
+    DuomenuSrautasMB: [65, 2, 27, 1, 52, 7, 87, 89, 7, 89, 6]
 };
 
-/* exported laboratorinis2Uzd3Data */
 var laboratorinis2Uzd3Data = {
-    Gylis: [12,15,18,21,24,27,30,33],
-    Trukme: [200,100,60,50,40,30,25,20]
+    Gylis: [12, 15, 18, 21, 24, 27, 30, 33],
+    Trukme: [200, 100, 60, 50, 40, 30, 25, 20]
+};
+export {
+    laboratorinis2Uzd1Data,
+    laboratorinis2Uzd2Data,
+    laboratorinis2Uzd3Data
 };

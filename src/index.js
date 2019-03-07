@@ -1,5 +1,6 @@
 import calculator from './calculator/calculator.js';
 import laboratorinis_1 from './laboratorinis_1/laboratorinis_1.js';
+import laboratorinis_2 from './laboratorinis_2/laboratorinis_2.js';
 window.onload = () => {
     loadCalculator();
 
@@ -47,6 +48,7 @@ function loadLab2() {
         if (this.readyState !== 4) return;
         if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
+        laboratorinis_2.onload();
     };
     xhr.send();
 }
