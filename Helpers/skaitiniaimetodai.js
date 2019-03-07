@@ -1,6 +1,4 @@
-/* exported skaitiniaiMetodai */
-var skaitiniaiMetodai = new SkaitiniaiMetodai();
-
+/* exported SkaitiniaiMetodai */
 function SkaitiniaiMetodai() {
     this.roundingPrecision = 4;
     this.calcApproximationUsingLagrange = function (x, n, data) {

@@ -1,3 +1,4 @@
+var skaitiniaiMetodai = new SkaitiniaiMetodai();
 window.onload = () => {
     let data = laboratorinis2Uzd1Data.map(e => {
         return {
