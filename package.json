@@ -4,7 +4,8 @@
   "description": "Kurso \"Skaitiniai metodai ir algoritmai\" laboratoriniai darbai",
   "main": "index.js",
   "scripts": {
-    "build": "webpack src/index.js --output dist/bundle.js --mode development"
+    "build": "webpack-dev-server src/index.js --output dist/bundle.js --mode development",
+    "build:prod": "webpack-dev-server src/index.js --output dist/bundle.js --mode production"
   },
   "author": "julys321",
   "license": "MIT",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   }
 }
