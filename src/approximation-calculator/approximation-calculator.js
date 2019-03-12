@@ -1,5 +1,5 @@
 import SkaitiniaiMetodai from '../Helpers/skaitiniaimetodai.js';
-import math from '../../node_modules/mathjs/index.js';
+import math from 'mathjs';
 import Plotly from '../../lib/plotly.js';
 class Calculator {
     constructor() {

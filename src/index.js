@@ -1,10 +1,10 @@
-import calculator from './calculator/calculator.js';
+import calculator from './approximation-calculator/approximation-calculator.js';
 import laboratorinis_1 from './laboratorinis_1/laboratorinis_1.js';
 import laboratorinis_2 from './laboratorinis_2/laboratorinis_2.js';
 window.onload = () => {
     loadCalculator();
 
-    document.getElementById('calculator-button').onclick = () => {
+    document.getElementById('approximation-calculator-button').onclick = () => {
         loadCalculator();
     };
     document.getElementById('lab1-button').onclick = () => {
@@ -17,7 +17,7 @@ window.onload = () => {
 
 function loadCalculator() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'calculator/calculator.html', true);
+    xhr.open('GET', 'approximation-calculator/approximation-calculator.html', true);
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4) return;
         if (this.status !== 200) return;
