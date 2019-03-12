@@ -32,12 +32,5 @@
         ]
     },
     "globals": {
-        "Plotly": "readable",
-        "duomenysRackausko": "readable",
-        "math": "readable",
-        "laboratorinis2Uzd1Data": "readable",
-        "laboratorinis2Uzd2Data": "readable",
-        "laboratorinis2Uzd3Data": "readable",
-        "SkaitiniaiMetodai": "readable"
     }
 }

@@ -4,7 +4,7 @@
   "description": "Kurso \"Skaitiniai metodai ir algoritmai\" laboratoriniai darbai",
   "main": "index.js",
   "scripts": {
-    "build": "webpack-dev-server src/index.js --output dist/bundle.js --mode development",
+    "build": "webpack-dev-server",
     "build:prod": "webpack-dev-server src/index.js --output dist/bundle.js --mode production"
   },
   "author": "julys321",
