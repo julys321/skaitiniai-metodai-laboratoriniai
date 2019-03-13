@@ -11,13 +11,5 @@ module.exports = {
         publicPath: '/dist',
         contentBase: path.resolve(__dirname, 'src'),
         watchContentBase: true
-    },
-    module: {
-        rules: [{
-            enforce: 'pre',
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: 'eslint-loader'
-        }]
     }
 };
