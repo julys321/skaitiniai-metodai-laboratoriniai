@@ -2,6 +2,7 @@ import approximationCalculator from './approximation-calculator/approximation-ca
 import kappaCalculator from './kappa-calculator/kappa-calculator.js';
 import laboratorinis_1 from './laboratorinis_1/laboratorinis_1.js';
 import laboratorinis_2 from './laboratorinis_2/laboratorinis_2.js';
+import laboratorinis_3 from './laboratorinis_3/laboratorinis_3.js';
 window.onload = () => {
     loadKappaCalculator();
 
@@ -16,6 +17,9 @@ window.onload = () => {
     };
     document.getElementById('lab2-button').onclick = () => {
         loadLab2();
+    };
+    document.getElementById('lab3-button').onclick = () => {
+        loadLab3();
     };
 };
 
@@ -63,6 +67,18 @@ function loadLab2() {
         if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
         laboratorinis_2.onload();
+    };
+    xhr.send();
+}
+
+function loadLab3() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'laboratorinis_3/laboratorinis_3.html', true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4) return;
+        if (this.status !== 200) return;
+        document.getElementById('content').innerHTML = this.responseText;
+        laboratorinis_3.onload();
     };
     xhr.send();
 }
