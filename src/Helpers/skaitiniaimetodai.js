@@ -1,4 +1,5 @@
 import math from '../../node_modules/mathjs/index.js';
+math.import(require('mathjs-simple-integral'));
 export default function SkaitiniaiMetodai() {
     this.roundingPrecision = 4;
     this.calcApproximationUsingLagrange = function (x, n, data) {
@@ -73,5 +74,16 @@ export default function SkaitiniaiMetodai() {
             approximationValues.push(math.round(this.calcApproximationUsingLagrange(x, i, data), this.roundingPrecision));
         }
         return approximationValues;
+    };
+    this.calcDefinitiveIntegral = function (a, b, f) {
+        let integral = math.integral(f, 'x');
+        integral = math.parse(integral.toString());
+        let aIntegral = integral.eval({
+            x: a
+        });
+        let bIntegral = integral.eval({
+            x: b
+        });
+        return math.round(math.subtract(bIntegral, aIntegral),this.roundingPrecision);
     };
 }
