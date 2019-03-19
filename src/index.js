@@ -9,7 +9,7 @@ window.onload = () => {
     document.getElementById('approximation-calculator-button').onclick = () => {
         loadApproximationCalculator();
     };
-    document.getElementById('kappa-calculator-button').onclick = () => {
+    document.getElementById('numerical-integration-calculator-button').onclick = () => {
         loadNumericalIntegrationCalculator();
     };
     document.getElementById('lab1-button').onclick = () => {

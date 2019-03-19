@@ -84,6 +84,18 @@ export default function SkaitiniaiMetodai() {
         let bIntegral = integral.eval({
             x: b
         });
-        return math.round(math.subtract(bIntegral, aIntegral),this.roundingPrecision);
+        return math.round(math.subtract(bIntegral, aIntegral), this.roundingPrecision);
+    };
+    this.calcNumericalIntegrationUsingRectMidPointRule = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let xMidPoints = [];
+        //h -  distance between limits divided by numberOfIntervals
+        let h =math.round(math.divide(math.subtract(rightLimit, leftLimit),numberOfIntervals),this.roundingPrecision);
+        for (let i = 0; i < numberOfIntervals; i++) {
+            xMidPoints.push(math.round(math.add(math.multiply(i, h), math.divide(h, 2)),this.roundingPrecision));
+        }
+        let yOfMidPoints = xMidPoints.map(e=>math.round(math.eval(f,{x:e}),this.roundingPrecision));
+        let areas = yOfMidPoints.map(e=>math.round(math.multiply(h,e),this.roundingPrecision));
+        let sumOfAreas = areas.reduce((acc,e)=>math.add(acc,e));
+        return sumOfAreas;
     };
 }
