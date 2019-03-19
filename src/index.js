@@ -1,16 +1,16 @@
 import approximationCalculator from './approximation-calculator/approximation-calculator.js';
-import kappaCalculator from './kappa-calculator/kappa-calculator.js';
+import numericalIntegrationCalculator from './numerical-integration-calculator/numerical-integration-calculator.js';
 import laboratorinis_1 from './laboratorinis_1/laboratorinis_1.js';
 import laboratorinis_2 from './laboratorinis_2/laboratorinis_2.js';
 import laboratorinis_3 from './laboratorinis_3/laboratorinis_3.js';
 window.onload = () => {
-    loadKappaCalculator();
+    loadNumericalIntegrationCalculator();
 
     document.getElementById('approximation-calculator-button').onclick = () => {
         loadApproximationCalculator();
     };
     document.getElementById('kappa-calculator-button').onclick = () => {
-        loadKappaCalculator();
+        loadNumericalIntegrationCalculator();
     };
     document.getElementById('lab1-button').onclick = () => {
         loadLab1();
@@ -35,14 +35,14 @@ function loadApproximationCalculator() {
     xhr.send();
 }
 
-function loadKappaCalculator() {
+function loadNumericalIntegrationCalculator() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'kappa-calculator/kappa-calculator.html', true);
+    xhr.open('GET', 'numerical-integration-calculator/numerical-integration-calculator.html', true);
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4) return;
         if (this.status !== 200) return;
         document.getElementById('content').innerHTML = this.responseText;
-        kappaCalculator.onload();
+        numericalIntegrationCalculator.onload();
     };
     xhr.send();
 }
