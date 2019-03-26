@@ -86,16 +86,103 @@ export default function SkaitiniaiMetodai() {
         });
         return math.round(math.subtract(bIntegral, aIntegral), this.roundingPrecision);
     };
-    this.calcNumericalIntegrationUsingRectMidPointRule = function (f, leftLimit, rightLimit, numberOfIntervals) {
+    this.calcNumericalIntegrationUsingRectangleMidPointMethod = function (f, leftLimit, rightLimit, numberOfIntervals) {
         let xMidPoints = [];
         //h -  distance between limits divided by numberOfIntervals
-        let h =math.round(math.divide(math.subtract(rightLimit, leftLimit),numberOfIntervals),this.roundingPrecision);
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
         for (let i = 0; i < numberOfIntervals; i++) {
-            xMidPoints.push(math.round(math.add(math.multiply(i, h), math.divide(h, 2)),this.roundingPrecision));
+            xMidPoints.push(math.round(math.add(math.multiply(i, h), math.divide(h, 2), leftLimit), this.roundingPrecision));
         }
-        let yOfMidPoints = xMidPoints.map(e=>math.round(math.eval(f,{x:e}),this.roundingPrecision));
-        let areas = yOfMidPoints.map(e=>math.round(math.multiply(h,e),this.roundingPrecision));
-        let sumOfAreas = areas.reduce((acc,e)=>math.add(acc,e));
+        let yOfMidPoints = xMidPoints.map(e => math.round(math.eval(f, {
+            x: e
+        }), this.roundingPrecision));
+        let areas = yOfMidPoints.map(e => math.round(math.multiply(h, e), this.roundingPrecision));
+        let sumOfAreas = areas.reduce((acc, e) => math.add(acc, e));
         return sumOfAreas;
+    };
+    this.calcNumericalIntegrationUsingRectangleMidPointMethodBias = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
+        let derivative = math.parse(math.derivative(math.derivative(f, 'x'), 'x').toString());
+        let values = [];
+        for (let x = leftLimit; x <= rightLimit; x = math.number(math.add(x, math.bignumber(0.01)))) {
+            values.push(math.round(derivative.eval({
+                x
+            }), this.roundingPrecision));
+        }
+        let M = Math.max(...values);
+        let result = math.multiply(math.multiply(h, h), math.subtract(rightLimit, leftLimit));
+        result = math.multiply(math.divide(result, 24), M);
+        return math.round(result, this.roundingPrecision);
+    };
+    this.calcNumericalIntegrationUsingTrapezoidMethod = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let xPoints = [];
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
+        for (let i = 0; i <= numberOfIntervals; i++) {
+            xPoints.push(math.round(math.add(math.multiply(i, h), leftLimit), this.roundingPrecision));
+        }
+        let yPoints = xPoints.map(e => math.round(math.eval(f, {
+            x: e
+        }), this.roundingPrecision));
+        let areas = [];
+        for (let i = 0; i < numberOfIntervals; i++) {
+            areas.push(math.round(math.divide(math.multiply(math.add(yPoints[i], yPoints[i + 1]), h), 2), this.roundingPrecision));
+        }
+        yPoints.map(e => math.round(math.multiply(h, e), this.roundingPrecision));
+        let sumOfAreas = areas.reduce((acc, e) => math.add(acc, e));
+        return sumOfAreas;
+    };
+    this.calcNumericalIntegrationUsingTrapezoidMethodBias = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
+        let derivative = math.parse(math.derivative(math.derivative(f, 'x'), 'x').toString());
+        let values = [];
+        for (let x = leftLimit; x <= rightLimit; x = math.number(math.add(x, math.bignumber(0.01)))) {
+            values.push(math.round(derivative.eval({
+                x
+            }), this.roundingPrecision));
+        }
+        let M = Math.max(...values);
+        let result = math.multiply(math.multiply(h, h), math.subtract(rightLimit, leftLimit));
+        result = math.round(math.multiply(math.divide(result, 12), M), this.roundingPrecision);
+        return result;
+    };
+    this.calcNumericalIntegrationUsingSimpsonMethod = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let xPoints = [];
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
+        for (let i = 0; i <= numberOfIntervals; i++) {
+            xPoints.push(math.round(math.add(math.multiply(i, h), leftLimit), this.roundingPrecision));
+        }
+        let areas = [];
+        for (let i = 0; i < numberOfIntervals; i++) {
+            let x = xPoints[i];
+            let temp1 = math.round(math.eval(f, {
+                x
+            }), this.roundingPrecision);
+            x = math.divide(math.add(xPoints[i], xPoints[i + 1]), 2);
+            let temp2 = math.multiply(math.round(math.eval(f, {
+                x
+            }), this.roundingPrecision), 4);
+            x = xPoints[i + 1];
+            let temp3 = math.round(math.eval(f, {
+                x
+            }), this.roundingPrecision);
+            areas.push(math.round(math.multiply(math.divide(h, 6), math.sum(temp1, temp2, temp3)), this.roundingPrecision));
+        }
+        let sumOfAreas = areas.reduce((acc, e) => math.add(acc, e));
+        return sumOfAreas;
+    };
+    this.calcNumericalIntegrationUsingSimpsonMethodBias = function (f, leftLimit, rightLimit, numberOfIntervals) {
+        let h = math.round(math.divide(math.subtract(rightLimit, leftLimit), numberOfIntervals), this.roundingPrecision);
+        let derivative = math.parse(math.derivative(math.derivative(math.derivative(math.derivative(f, 'x'), 'x'), 'x'), 'x').toString());
+        let values = [];
+        for (let x = leftLimit; x <= rightLimit; x = math.number(math.add(x, math.bignumber(0.01)))) {
+            values.push(math.round(derivative.eval({
+                x
+            }), this.roundingPrecision));
+        }
+        let M = Math.max(...values);
+        console.log(M)
+        let result = math.multiply(math.pow(h, 4), math.subtract(rightLimit, leftLimit));
+        result = math.round(math.multiply(math.divide(result, 2880), M), this.roundingPrecision);
+        return result;
     };
 }

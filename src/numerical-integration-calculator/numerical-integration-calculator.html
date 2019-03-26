@@ -1,29 +1,90 @@
 <h3>Numerical integration using Newton-Cotes formulas</h3>
 <div id="numerical-integration-calculator">
-    <label id="rectangle-mid-point-rule-label" for="rectangle-mid-point-rule">
-        <b>Rectangle (mid point) rule</b>
+    <label id="rectangle-mid-point-method-label" for="rectangle-mid-point-method">
+        <b>Rectangle (mid point) method</b>
     </label>
-    <div id="rectangle-mid-point-rule">
-        <form id="rectangle-mid-point-rule-form">
-            <label id="rectangle-mid-point-rule-function-input-label" for="rectangle-mid-point-rule-function-input">
+    <div id="rectangle-mid-point-method">
+        <form id="rectangle-mid-point-method-form">
+            <label id="rectangle-mid-point-method-function-input-label" for="rectangle-mid-point-method-function-input">
                 function:*</label>
-            <input id="rectangle-mid-point-rule-function-input" type="text" placeholder="pow(x,4)" value="pow(x,4)"
+            <input id="rectangle-mid-point-method-function-input" type="text" placeholder="pow(x,4)" value="pow(x,4)"
                 required />
             <br>
-            <label id="rectangle-mid-point-rule-left-limit-input-label" for="rectangle-mid-point-rule-left-limit-input">
+            <label id="rectangle-mid-point-method-left-limit-input-label" for="rectangle-mid-point-method-left-limit-input">
                 left limit:*</label>
-            <input id="rectangle-mid-point-rule-left-limit-input" type="text" placeholder="1" value="0" required />
+            <input id="rectangle-mid-point-method-left-limit-input" type="text" placeholder="1" value="0" required />
             <br>
-            <label id="rectangle-mid-point-rule-right-limit-input-label" for="rectangle-mid-point-rule-right-limit-input">
+            <label id="rectangle-mid-point-method-right-limit-input-label"
+                for="rectangle-mid-point-method-right-limit-input">
                 right limit:*</label>
-            <input id="rectangle-mid-point-rule-right-limit-input" type="text" placeholder="2" value="1" required />
+            <input id="rectangle-mid-point-method-right-limit-input" type="text" placeholder="2" value="1" required />
             <br>
-            <label id="rectangle-mid-point-rule-number-of-intervals-input-label" for="rectangle-mid-point-rule-number-of-intervals-input">
+            <label id="rectangle-mid-point-method-number-of-intervals-input-label"
+                for="rectangle-mid-point-method-number-of-intervals-input">
                 number of intervals:*</label>
-            <input id="rectangle-mid-point-rule-number-of-intervals-input" type="text" placeholder="1" value="4"
+            <input id="rectangle-mid-point-method-number-of-intervals-input" type="text" placeholder="1" value="4"
                 required />
             <br>
-            <input id="rectangle-mid-point-rule-button" type="button" value="Calculate">
+            <input id="rectangle-mid-point-method-button" type="button" value="Calculate">
+            <input id="rectangle-mid-point-method-bias-button" type="button" value="Bias">
         </form>
     </div>
+    <label id="trapezoid-method-label" for="trapezoid-method">
+        <b>Trapezoid method</b>
+    </label>
+    <div id="trapezoid-method">
+        <form id="trapezoid-method-form">
+            <label id="trapezoid-method-function-input-label" for="trapezoid-method-function-input">
+                function:*</label>
+            <input id="trapezoid-method-function-input" type="text" placeholder="pow(x,4)" value="pow(x,4)"
+                required />
+            <br>
+            <label id="trapezoid-method-left-limit-input-label" for="trapezoid-method-left-limit-input">
+                left limit:*</label>
+            <input id="trapezoid-method-left-limit-input" type="text" placeholder="1" value="0" required />
+            <br>
+            <label id="trapezoid-method-right-limit-input-label"
+                for="trapezoid-method-right-limit-input">
+                right limit:*</label>
+            <input id="trapezoid-method-right-limit-input" type="text" placeholder="2" value="1" required />
+            <br>
+            <label id="trapezoid-method-number-of-intervals-input-label"
+                for="trapezoid-method-number-of-intervals-input">
+                number of intervals:*</label>
+            <input id="trapezoid-method-number-of-intervals-input" type="text" placeholder="1" value="4"
+                required />
+            <br>
+            <input id="trapezoid-method-button" type="button" value="Calculate">
+            <input id="trapezoid-method-bias-button" type="button" value="Bias">
+        </form>
+    </div>
+    <label id="simpson-method-label" for="simpson-method">
+            <b>Simpson method</b>
+        </label>
+        <div id="simpson-method">
+            <form id="simpson-method-form">
+                <label id="simpson-method-function-input-label" for="simpson-method-function-input">
+                    function:*</label>
+                <input id="simpson-method-function-input" type="text" placeholder="pow(x,4)" value="pow(x,4)"
+                    required />
+                <br>
+                <label id="simpson-method-left-limit-input-label" for="simpson-method-left-limit-input">
+                    left limit:*</label>
+                <input id="simpson-method-left-limit-input" type="text" placeholder="1" value="0" required />
+                <br>
+                <label id="simpson-method-right-limit-input-label"
+                    for="simpson-method-right-limit-input">
+                    right limit:*</label>
+                <input id="simpson-method-right-limit-input" type="text" placeholder="2" value="1" required />
+                <br>
+                <label id="simpson-method-number-of-intervals-input-label"
+                    for="simpson-method-number-of-intervals-input">
+                    number of intervals:*</label>
+                <input id="simpson-method-number-of-intervals-input" type="text" placeholder="1" value="4"
+                    required />
+                <br>
+                <input id="simpson-method-button" type="button" value="Calculate">
+                <input id="simpson-method-bias-button" type="button" value="Bias">
+            </form>
+        </div>
 </div>
